@@ -1,0 +1,81 @@
+﻿@model RedditWay.Domain.Dtos.SearchDto
+
+@{
+    ViewData["Title"] = "New Search";
+}
+
+<h2>New Search</h2>
+
+<form asp-action="ExtractUsers" method="post">
+    <div class="form-group">
+        <label asp-for="UserId">User ID (optional)</label>
+        <input asp-for="UserId" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Keyword">Keyword</label>
+        <input asp-for="Keyword" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Search Type</label>
+        <select asp-for="Type" class="form-control">
+            <option value="API">Api</option>
+            <option value="WEB">Web</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Group">Group</label>
+        <input asp-for="Group" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Pages">Pages to Search</label>
+        <input asp-for="Pages" class="form-control" type="number" min="1" required />
+    </div>
+
+    <div class="form-group">
+        <label>Sort By</label>
+        <select asp-for="SortBy" class="form-control">
+            <option value="Best">Best</option>
+            <option value="Hot">Hot</option>
+            <option value="New">New</option>
+            <option value="Top">Top</option>
+            <option value="Rising">Rising</option>
+        </select>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="HasYouTubeChannel" class="form-check-input" type="checkbox" />
+        <label asp-for="HasYouTubeChannel" class="form-check-label"></label>
+    </div>
+
+    <hr />
+
+    <h4>Post Karma Filter (optional)</h4>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PostKarma_Min">Min Post Karma</label>
+            <input name="PostKarma.Min" class="form-control" type="number" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="PostKarma_Max">Max Post Karma</label>
+            <input name="PostKarma.Max" class="form-control" type="number" />
+        </div>
+    </div>
+
+    <h4>Comment Karma Filter (optional)</h4>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="CommentKarma_Min">Min Comment Karma</label>
+            <input name="CommentKarma.Min" class="form-control" type="number" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="CommentKarma_Max">Max Comment Karma</label>
+            <input name="CommentKarma.Max" class="form-control" type="number" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Start Search</button>
+</form>

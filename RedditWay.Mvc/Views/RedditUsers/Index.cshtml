@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RedditWay.Domain.Entities.RedditUsers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["userCount"] - Leads</h1>
+
+<p>
+    <a href="/RedditUsers/DeleteAll">Clear All</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostKarma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentKarma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExternalLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CakeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostKarma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentKarma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group)
+            </td>
+            <td>
+                    <a href="@item.ExternalLink" target="_blank" rel="noopener noreferrer">
+                        @item.ExternalLink
+                    </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CakeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
